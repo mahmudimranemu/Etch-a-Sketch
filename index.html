@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./style.css" />
+  </head>
+  <body id="id-body">
+    <header>
+      <h1>Etch A Sketch</h1>
+    </header>
+    <main>
+      <aside>
+        <h3>Side menu</h3>
+        <div class="artboard-sizes">
+          <p>Artboarde Sizes</p>
+          <input
+            type="range"
+            min="1"
+            max="64"
+            step="1"
+            value="16"
+            id="artbrd-size" />
+        </div>
+
+        <button id="count">Artboard Count</button>
+      </aside>
+      <div class="right-panel">
+        <div
+          id="artboard"
+          class="container"></div>
+        <p id="grid-size"></p>
+      </div>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>
