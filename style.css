@@ -27,14 +27,13 @@ main {
 }
 
 aside {
-  width: 300px;
-  border: 1px solid #000;
+  padding: 10px 20px;
 }
 
-.container {
+#artboard {
   border: 1px solid #000;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(16, 1fr);
@@ -43,4 +42,8 @@ aside {
 #box {
   border: 1px solid #ececec;
   background: white;
+}
+
+.no-grid .box {
+  border: none !important;
 }

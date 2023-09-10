@@ -8,14 +8,17 @@
     <title>Document</title>
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link
+      rel="stylesheet"
       href="./style.css" />
   </head>
   <body id="id-body">
     <header>
       <h1>Etch A Sketch</h1>
     </header>
-    <main>
-      <aside>
+    <main class="container">
+      <aside class="padding-medium">
         <h3>Side menu</h3>
         <div class="artboard-sizes">
           <p>Artboarde Sizes</p>
@@ -27,13 +30,15 @@
             value="16"
             id="artbrd-size" />
         </div>
+        <input
+          id="color-plate"
+          type="color"
+          value="#000000" />
 
-        <button id="count">Artboard Count</button>
+        <button id="grid-toggle">Show/Hide Grid</button>
       </aside>
       <div class="right-panel">
-        <div
-          id="artboard"
-          class="container"></div>
+        <div id="artboard"></div>
         <p id="grid-size"></p>
       </div>
     </main>

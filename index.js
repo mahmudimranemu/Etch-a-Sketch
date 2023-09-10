@@ -1,26 +1,27 @@
 const artboard = document.getElementById("artboard");
-const countBtn = document.getElementById("count");
-const sizeBtn = document.querySelector("#artbrd-size");
+const gridToggleBtn = document.getElementById("grid-toggle");
+const gridSizeRange = document.querySelector("#artbrd-size");
 const body = document.getElementById("id-body");
-const gridSize = document.getElementById("grid-size");
-const boxes = document.querySelector("#box");
+const showGridSize = document.getElementById("grid-size");
+const boxes = document.querySelectorAll("#box");
+const colorPlate = document.getElementById("color-plate");
 
-let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+const defaultGrid = 16;
 
-body.addEventListener("load", gridLayout());
+body.addEventListener("load", gridLayout(defaultGrid));
 
-sizeBtn.addEventListener("input", () => {
+//Update grid
+
+gridSizeRange.addEventListener("input", () => {
   newGrid();
 });
 
-function gridLayout() {
-  let grid = sizeBtn.value * sizeBtn.value;
-  artboard.style.gridTemplateColumns = "repeat(" + sizeBtn.value + ", 1fr)";
-  artboard.style.gridTemplateRows = "repeat(" + sizeBtn.value + ", 1fr)";
+function gridLayout(currentGrid) {
+  let grid = currentGrid * currentGrid;
+  artboard.style.gridTemplateColumns = `repeat(${currentGrid}, 1fr)`;
+  artboard.style.gridTemplateRows = `repeat(${currentGrid}, 1fr)`;
 
-  gridSize.textContent = sizeBtn.value + " X " + sizeBtn.value;
+  showGridSize.textContent = currentGrid + " X " + currentGrid;
 
   for (let i = 0; i < grid; i++) {
     const box = document.createElement("div");
@@ -34,19 +35,35 @@ function newGrid() {
   while (artboard.hasChildNodes()) {
     artboard.removeChild(artboard.firstChild);
   }
-  gridLayout();
+  gridLayout(gridSizeRange.value);
 }
 
-artboard.addEventListener("click", (e) => {
-  if (e.target.classList.contains("box")) {
-    e.target.style.backgroundColor = "#000";
-    e.target.style.borderColor = "#000";
-  }
-});
+let mouseClicked = false;
+mouseReleased = true;
 
-artboard.addEventListener("mouseover", (e) => {
-  if (e.target.classList.contains("box")) {
-    e.target.style.backgroundColor = "red";
-    e.target.style.borderColor = "#000";
+artboard.addEventListener("click", onMouseClick, false);
+artboard.addEventListener("mousemove", onMouseMove, false);
+
+function onMouseClick(e) {
+  mouseClicked = !mouseClicked;
+  artboard.style.cursor = "";
+}
+
+function onMouseMove(e) {
+  if (mouseClicked) {
+    artboard.style.cursor = "cell";
+    //artboard.style.cursor = "url('img/draw.svg'), auto";
+    drawColor(e);
   }
+}
+artboard.style.cursor = "cell";
+function drawColor(e) {
+  if (e.target.classList.contains("box")) {
+    e.target.style.backgroundColor = colorPlate.value;
+    e.target.style.borderColor = colorPlate.value;
+  }
+}
+
+gridToggleBtn.addEventListener("click", () => {
+  artboard.classList.toggle("no-grid");
 });
