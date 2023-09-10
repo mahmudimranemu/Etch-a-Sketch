@@ -19,7 +19,11 @@
     </header>
     <main class="container">
       <aside class="padding-medium">
-        <h3>Side menu</h3>
+        <p>Select Color</p>
+        <input
+          id="color-plate"
+          type="color"
+          value="#FF0000" />
         <div class="artboard-sizes">
           <p>Artboarde Sizes</p>
           <input
@@ -30,12 +34,9 @@
             value="16"
             id="artbrd-size" />
         </div>
-        <input
-          id="color-plate"
-          type="color"
-          value="#000000" />
 
         <button id="grid-toggle">Show/Hide Grid</button>
+        <button id="clear-artboard">Clear</button>
       </aside>
       <div class="right-panel">
         <div id="artboard"></div>

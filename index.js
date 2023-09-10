@@ -5,6 +5,7 @@ const body = document.getElementById("id-body");
 const showGridSize = document.getElementById("grid-size");
 const boxes = document.querySelectorAll("#box");
 const colorPlate = document.getElementById("color-plate");
+const clearBtn = document.getElementById("clear-artboard");
 
 const defaultGrid = 16;
 
@@ -66,4 +67,8 @@ function drawColor(e) {
 
 gridToggleBtn.addEventListener("click", () => {
   artboard.classList.toggle("no-grid");
+});
+
+clearBtn.addEventListener("click", () => {
+  newGrid();
 });
