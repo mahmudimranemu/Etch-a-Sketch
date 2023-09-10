@@ -11,6 +11,10 @@ const defaultGrid = 16;
 
 body.addEventListener("load", gridLayout(defaultGrid));
 
+clearBtn.addEventListener("click", () => {
+  newGrid();
+});
+
 //Update grid
 
 gridSizeRange.addEventListener("input", () => {
@@ -67,8 +71,4 @@ function drawColor(e) {
 
 gridToggleBtn.addEventListener("click", () => {
   artboard.classList.toggle("no-grid");
-});
-
-clearBtn.addEventListener("click", () => {
-  newGrid();
 });
